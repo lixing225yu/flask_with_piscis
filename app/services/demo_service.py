@@ -11,7 +11,7 @@ class DemoService:
         total = 50
         items = []
         for i in range(total):
-            items.append({'name': f'{params.name}_i' if params.name else f'user_{i}',
+            items.append({'name': f'{params.name}_{i}' if params.name else f'user_{i}',
                           'user_type': choice(UserTypeEnum.value_list())})
         if params.user_type:
             items = [i for i in items if i['user_type'] == params.user_type]

@@ -28,9 +28,7 @@ class Choice(Generic[T]):
         return t(value)
 
 
-def choice(values: List[int]):
-    return type("ChoiceInt", (Choice, int), dict(values=values))
+def choice(values: List):
+    return type("Choice", (Choice, type(values[0])), dict(values=values))
 
 
-def choice_str(values: List[str]):
-    return type("ChoiceStr", (Choice, str), dict(values=values))
