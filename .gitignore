@@ -1,0 +1,16 @@
+syntax: glob
+.idea
+*.pyc
+*.log
+*.log.*
+*.db
+*.DS_Store
+*.zip
+*.pid
+logs
+log
+tmp
+temp
+.python-version
+.vscode/
+
