@@ -4,4 +4,4 @@
 ## 运行
 #### python manage.py
 ## 接口文档
-#### http://127.0.0.1:5000/docs
+#### http://127.0.0.1:5000/api/docs
