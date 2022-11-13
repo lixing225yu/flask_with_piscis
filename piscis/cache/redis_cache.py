@@ -237,5 +237,5 @@ class RedisCache(BaseCache):
         lock.release()
 
 
-redis_cli = RedisCache(global_config.settings.redis.servers,
-                       global_config.settings.redis.prefix, password=global_config.settings.redis.password)
+redis_cli = RedisCache(settings.redis.servers,
+                       settings.redis.prefix, password=settings.redis.password)

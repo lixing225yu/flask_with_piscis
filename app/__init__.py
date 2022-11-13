@@ -9,9 +9,10 @@ from piscis.exception import APIException
 from piscis.web import InternalServerError
 from piscis.web import Piscis
 
-from config import global_config, stage
+from config import global_config, stage, settings
 
-siwa = SiwaDoc()
+siwa = SiwaDoc(doc_url=settings.api_prefix + "/docs",
+               openapi_url=settings.api_prefix + '/openapi.json')
 
 
 def load_app_config(app):
@@ -26,7 +27,6 @@ def load_app_config(app):
 def create_app(register_all=True, **kwargs):
     app = Flask(__name__)
     load_app_config(app)
-
     if register_all:
         Piscis(app, siwa=siwa, **kwargs)
         register_blueprints(app)
@@ -45,7 +45,7 @@ def create_app(register_all=True, **kwargs):
 def register_blueprints(app):
     from app.controllers.views.demo_view import bp as demo_bp
     def deco_url_prefix(prefix, module_name):
-        prefix = f"{app.config.get('API_PREFIX') or '/api'}{prefix}"
+        prefix = f"{settings.api_prefix}{prefix}"
         global_config.module.setdefault(prefix, module_name)
         return prefix
 

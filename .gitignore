@@ -13,4 +13,4 @@ tmp
 temp
 .python-version
 .vscode/
-
+.env.*

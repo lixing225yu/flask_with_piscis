@@ -13,11 +13,11 @@ class FlaskCelery:
     flask_app: Flask = None
 
     def __init__(self, flask_config: str = None, **kwargs):
-        if not global_config.settings.celery:
+        if not settings.celery:
             return
-        conf = global_config.settings.celery
+        conf = settings.celery
         app = Celery(
-            global_config.settings.project_name,
+            settings.project_name,
             broker=conf.broker_url,
         )
         FlaskCelery.app = app
@@ -36,11 +36,11 @@ class FlaskCelery:
 #         return
 #
 #     tasks_packages = [
-#         global_config.settings.project_name,
+#         settings.project_name,
 #     ]
 #
-#     if global_config.settings.celery.task_packages:
-#         tasks_packages.extend(global_config.settings.celery.task_packages)
+#     if settings.celery.task_packages:
+#         tasks_packages.extend(settings.celery.task_packages)
 #
 #     MyCelery.app.autodiscover_tasks(lambda: tasks_packages)
 
